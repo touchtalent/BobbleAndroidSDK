@@ -4,7 +4,7 @@ Bobble Speech-to-text SDK provides speech recognition services in top Indic lang
 
 ## <a name="implementation_steps"></a>Implementation Steps
 
-- Add and initialise BobbleSDK Core in your project. Refer [here](readme_core.md) for steps.
+- Add and initialise BobbleSDK Core in your project. Refer [here](Readme.md) for steps.
 
 - Add following dependency in your application module’s build.gradle.
 ```groovy

@@ -4,7 +4,7 @@ Bobble Intent Detection SDK is an on-device detection approach powered by Bobble
 
 ## Setting up
 
-* Add and initialize BobbleSDK Core in your project. Refer [here](readme_core.md) for steps.
+* Add and initialize BobbleSDK Core in your project. Refer [here](Readme.md) for steps.
 * Add the following line to the dependencies element in your application module’s build.gradle.
 
 Sync your Gradle project to ensure that the dependency is downloaded by the build system.

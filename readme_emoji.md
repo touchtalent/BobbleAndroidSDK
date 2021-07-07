@@ -5,7 +5,7 @@ Bobble Contextual Emoji Suggestion SDK is a tool that can be integrated into any
 
 ## <a name="implementation_steps"></a>Setting Up
 
-- Add and initialize BobbleSDK Core in your project. Refer [here](readme_core.md) for steps.
+- Add and initialize BobbleSDK Core in your project. Refer [here](Readme.md) for steps.
 
 - Add the following dependency in your application module’s build.gradle.
 ```groovy
