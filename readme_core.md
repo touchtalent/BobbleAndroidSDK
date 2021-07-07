@@ -13,7 +13,7 @@ Add a fully functional IME within your app with features such as global typing s
 
 ## Individual Modules
 
-- [Transliteration](readme_transliteration.md) - Accepts input in English script and tranlisterates them into native regional language. E.g - <i>"Namaste" -> "नमस्ते"</i>
+- [Transliteration](readme_transliteration.md) - Accepts input in English script and transliterates them into native regional language. E.g - <i>"Namaste" -> "नमस्ते"</i>
 
 - [Contextual Emoji Suggestion](readme_emoji.md) - Process a input text and get AI based contextual emoji suggestions. E.g - <i>"gussa mat dila" -> 😤,👿,😡,🙏,😠</i>
 - [On-device Intent detection](readme_intent_detection.md) - Process a input text and derive user's intent out of it without user's data actually leaving user's device. E.g - <i>"naya mobile chaiye lekin paise nahi hai yaar" -> Intents - <b>Shopping</b>, <b>Loan</b></i>
