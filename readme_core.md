@@ -1,6 +1,6 @@
 # BobbleSDK
 
-BobbleSDK is a collection of multiple SDKs which can be used to power conversations with cutting-edge AI technology. BobbleSDK is designed to provide tailored experience to suite requirements of every applications. Developers can either choose to implement the whole IME inside their application or choose from a variety of modules individually as per their need.
+BobbleSDK is a collection of multiple SDKs which can be used to power conversations with cutting-edge AI technology. BobbleSDK is designed to provide tailored experience to suite requirements of every application. Developers can either choose to implement the whole IME inside their application or choose from a variety of modules individually as per their need.
 
 ## <a name="requirements"></a>System Requirements
 - Minimum supported Android SDK level is 23 (Android 6.0)
