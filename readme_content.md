@@ -1,6 +1,6 @@
  #  Bobble Content SDK
 
-Bobble Content SDK provides a all in one solution for your content requirements:
+Bobble Content SDK provides an all in one solution for your content requirements:
 1. Creating Bobble Heads (Cartoonised Avatar heads from user's selfie)
 2. Stickers (with Bobble Head and OTF* support)
 3. Animated Stickers (with Bobble Head and OTF support)
