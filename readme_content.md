@@ -84,10 +84,8 @@ builder.setListener(new BobbleHeadProgressListener(){
 
     @Override
     public void onError(int errorCode){
-        //errorCode = ERROR_AUTHORISATION_FAILED
         //errorCode = ERROR_NO_FACE_DETECTED 
         //errorCode = ERROR_NO_INTERNET
-        //errorCode = ERROR_UNKNOWN
     }
 });
 BobbleHeadManager.create(this, builder.build());
@@ -127,10 +125,8 @@ builder.setListener(new BobblePackListener(){
 
     @Override
     public void onError(int errorCode){
-        //errorCode = ERROR_AUTHORISATION_FAILED
         //errorCode = ERROR_NO_PACKS_FOUND 
         //errorCode = ERROR_NO_INTERNET
-        //errorCode = ERROR_UNKNOWN
     }
 
 });
@@ -197,7 +193,6 @@ BobbleContentManager.searchContent(config, pageSize, pageNumber, new ContentSear
 
     @Override
     public void onError(int errorCode){
-        //errorCode = ERROR_AUTHORISATION_FAILED
         //errorCode = ERROR_INVALID_PARAMS 
         //errorCode = ERROR_NO_INTERNET
         //errorCode = ERROR_END_OF_PAGE

@@ -40,7 +40,6 @@ intentDetector.extractIntents(input, new IntentDetectionListener(){
         @Override
         public void onDetectionFailure(int errorCode) {
              //errorCode = ERROR_RESOURCES_UNAVAILABLE
-             //errorCode = ERROR_AUTHORISATION_FAILED
              //errorCode = ERROR_NO_RESULT
         }
 });

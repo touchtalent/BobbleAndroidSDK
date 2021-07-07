@@ -34,7 +34,6 @@ List<String> emojis = emojiSuggestions.getEmojis("gussa mat dila", new EmojiSugg
 
     public void onError(int errorCode){
         //errorCode = ERROR_RESOURCES_UNAVAILABLE
-        //errorCode = ERROR_AUTHORISATION_FAILED
         //errorCode = ERROR_NO_RESULT
         ...
     }
