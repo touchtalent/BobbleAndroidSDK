@@ -1,112 +1,72 @@
-# Bobble SpeechToText SDK 
+# Bobble Speech-to-text SDK 
 
+Bobble Speech-to-text SDK provides speech recognition services in top Indic languages. Check supported languages [here](#supported_languages). 
 
+## <a name="implementation_steps"></a>Implementation Steps
 
-## Setup
-This is an Android library containing an API to BobbleAI's speech recognition services.
+- Add and initialise BobbleSDK Core in your project. Refer [here](readme_core.md) for steps.
 
-Add and initialise BobbleSDK Core in your project. Refer [here](readme_core.md) for steps
-
-### Gradle
+- Add following dependency in your application module’s build.gradle.
 ```groovy
-implementation 'com.touchtalent.bobblesdk:speechToText'
+implementation 'com.touchtalent.bobblesdk:speech-to-text'
 ```
 
-## Required Permissions
+Sync your Gradle project to ensure that the dependency is downloaded by the build system.
 
- You need to grant `RECORD_AUDIO` permission to use the SpeechToText library
-
- Add this in your `AndroidManifest.xml`
+## Required Permissions : 
+The SDK requires following permission to work. Make sure to acquire them before using any of the APIs.
 
 ```xml
- <uses-permission android:name="android.permission.RECORD_AUDIO" />
+<uses-permission android:name="android.permission.RECORD_AUDIO" />
 ```
 
-## Initialization
-You need to call Init from your Activity `onCreate()` method 
+## Bobble Speech-to-text APIs
+
+### 1. BobbleSpeechToText
+Create an object of BobbleSpeechToText to start and stop listening. Listening stops when ```onResult(String)``` or ```onError(int)``` callbacks are received.
+
+- Start listening
 ```java
-public class MainActivity extends AppCompatActivity {
-
-    BobbleSpeechToText _speechToText;
-
-    Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_layout);
-
-        _speechToText = new BobbleSpeechToText(this, getPackageName());
-
-        _speechToText.setLocal(Locale.ENGLISH); // default 
+BobbleSpeechToText speechToText = new BobbleSpeechToText(context, "en_IN"); // Refer list below for supported locales.
+speechToText.startListening(new SpeechToTextListener() {
+    @Override
+    public void onReadyForSpeech() {
+        // User can now start speaking.
     }
 
     @Override
-    protected void onDestroy() {
-        //Stops the speech to text, if already started.
-        _speechToText.destroy();
+    public void onPartialResults(List<String> results) {
+        // Called when user has completed a word. 
+        // Helpful when speech is longer and UI needs to be updated accordingly
+        // Multiple results are provided sorted in descending order or probability.
     }
-}
+
+    @Override
+    public void onResult(String result) {
+        // Called when final results are available
+    }
+
+    @Override
+    public void onError(int errorCode) {
+        // errorCode = ERROR_MISSING_PERMISSION
+        // errorCode = ERROR_NO_INTERNET
+    }
+});
+
 ```
-
-
-## Usage
-### Speech recognition
-Inside an activity:
+- Stop listening
 ```java
-
-
-    _speechToText.startListening(new SpeechRecognitionListener() {
-        @Override
-        public void onReadyForSpeech() {
-            //The user has started to speak.
-        }
-
-        @Override
-        public void onRmsChanged(float value) {
-            //The sound level in the audio stream has changed.
-        }
-
-        @Override
-        public void onPartialResults(List<String> results) {
-            //Called when partial results are available.
-        }
-
-        @Override
-        public void onResult(String result) {
-            //Called when results are ready
-        }
-
-
-        @Override
-        public void onError(int errorCode) {
-            //A network or recognition error occurred.
-        }
-    });
-
+speechToText.stopListening();
 ```
-
-`onPartialResults` is called every time when SpeechToText detects a new word you have spoken, before the end of listening whereas `onResults` is called when SpeechToText finishes listening.
-
-`onPartialResults` is helpful when audio is longer and you need to update UI accordingly
-
-## Configuration
-You can configure various parameters by using the setter methods on the speech instance, which you can get like this anywhere in your code:
-
-```java
-_speechToText
-```
-
-
-## Get current locale 
-
-Use `_speechToText.getSpeechToTextLanguage()`. 
-
-
-## Set Speech To Text Language 
-Use `_speechToText.setLocale(locale)`.
-
-> When you set the locale, the voice is automatically changed to the default voice of that language. If you want to set a particular voice, remember to re-set it every time you change the locale, too.
-
-
-## Start And Stop Speech Listener
-
-Use `_speechToText.startListening(speechRecognitionListener)` to start listening voice and use `_speechToText.destroy()` to stop and destroy current listener.
+## <a name="supported_languages"></a>Supported Languages
+| Sl No. | Language name     | Language Locale   |
+| -- | ----------------- | ----------        |
+| 1. | English (India)   | en_IN             |
+| 2. | Hindi             | hi_IN             |
+| 3. | Bengali           | bn_IN             |
+| 4. | Marathi           | mr_IN             |
+| 5. | Tamil             | ta_IN             |
+| 6. | Malayalam         | ml_IN             |
+| 7. | Kannada           | kn_IN             | 
+| 8. | Gujarati          | gu_IN             |
+| 9.| Urdu              | ur_IN             |
