@@ -5,7 +5,7 @@ Bobble Transliteration SDK is an input tool that can be integrated into any Andr
 
 ## <a name="setting_up"></a>Setting Up
 
-- Add and initialise BobbleSDK Core in your project. Refer [here](Readme.md) for steps.
+- Add and initialise BobbleSDK Core in your project. Refer [here](Readme.md#setup) for steps.
 
 - Add the following dependency in your application module’s build.gradle.
 ```groovy
@@ -42,7 +42,7 @@ public class SplashActivity extends Activity {
 }
 ```
 
-2. Start transliterating
+2. Start transliterating -
 Create an instance of ```BobbleTransliterator``` to start a new transliteration session. Pass the language locale (refer [here](#supported_languages) for complete list) in the context of which transliteration needs to take place.
 
 >P.S - The language needs to be installed before it can be used. Use following function to check availability of a particular language
@@ -74,7 +74,7 @@ transliteration = transliterator.transliterate("namaste");// transliteration = "
 
 >P.S. - BobbleTransliterator can be used only in a single mode at a time, either ```binded mode``` or ```transliterate mode```, trying to use both modes on a single object will throw ```UnsupportedOperationException```. Create different objects to use multiple modes at the same time.
 
-3. Close BobbleTransliterator object
+3. Close BobbleTransliterator object -
 The ```BobbleTransliterator``` object must be closed to safely release resources when not required.
 
 ```java

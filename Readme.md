@@ -18,9 +18,9 @@ Add a fully functional IME within your app with features such as global typing s
 - [Contextual Emoji Suggestion](readme_emoji.md) - Process an input text and get AI based contextual emoji suggestions. E.g - <i>"gussa mat dila" -> 😤,👿,😡,🙏,😠</i>
 - [On-device Intent detection](readme_intent_detection.md) - Process an input text and derive user's intent out of it without user's data actually leaving user's device. E.g - <i>"naya mobile chaiye lekin paise nahi hai yaar" -> Intents - <b>Shopping</b>, <b>Loan</b></i>
 - [Avatar, Stickers, Animated Stickers, Regional GIFs](readme_content.md) - Convert your user's selfies into fun personalised avatars <i>(Bobble Head)</i> which can be used independently as well as with large repository of personalised and expressive content formats(100K+).
-- [Speech to Text](readme_speech_to_text.md) - Transcribe speech to text in 17 most used Indic langauges. 
+- [Speech to Text](readme_speech_to_text.md) - Transcribe speech to text in 9 most used Indic langauges. 
 
-### <a name="getting_started"></a>Setting Up
+### <a name="setup"></a>Setting Up
 
 - BobbleSDK uses BoM (Bill of Materials) to resolve versions of all modules by specifying a single version. Import the BoM for the BobbleSDK platform by adding following dependency in your application module’s build.gradle. 
 ```groovy
@@ -50,7 +50,7 @@ The SDK and modules uses few basic permissions, as listed below, for their smoot
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 ```
-Apart from the necessary permissions, the SDK recommends the client app to add following permissions and request their users for the same for a customised experience.
+Apart from the necessary permissions, the SDK recommends the client app to add following permissions and request it from their users for a customised experience.
 ```java
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 <uses-permission android:name="android.permission.READ_CONTACTS" />

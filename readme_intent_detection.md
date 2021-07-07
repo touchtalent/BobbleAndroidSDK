@@ -4,15 +4,14 @@ Bobble Intent Detection SDK is an on-device detection approach powered by Bobble
 
 ## Setting up
 
-* Add and initialize BobbleSDK Core in your project. Refer [here](Readme.md) for steps.
+* Add and initialize BobbleSDK Core in your project. Refer [here](Readme.md#setup) for steps.
 * Add the following line to the dependencies element in your application module’s build.gradle.
 
-Sync your Gradle project to ensure that the dependency is downloaded by the build system.
 ```groovy
 implementation 'com.touchtalent.bobblesdk:intent-detection'
 ```
 
-* Sync your Gradle project to ensure that the dependency is downloaded by the build system.
+Sync your Gradle project to ensure that the dependency is downloaded by the build system.
 
 ## Bobble Intent Detection APIs
 
@@ -20,7 +19,7 @@ implementation 'com.touchtalent.bobblesdk:intent-detection'
 
 #### 1. Get Intent
 
-Initialize an object of  `BobbleIntentDetector` and use it to extract intents from the text.
+Initialize an object of  `BobbleIntentDetector` and use it to extract intents from input text.
 
 ```java
 BobbleIntentDetector intentDetector = new BobbleIntentDetector();
@@ -73,7 +72,7 @@ public class MainActivity extends Activity {
 ## <a name="supported_intents"></a>Supported Intents
 | Sl No. | Intent       | Description   |
 | -- | -----------------| ----------    |
-| 1. | ```SHOPPING```   | Shows user's interest of shopping         |
+| 1. | ```SHOPPING```   | Shows user's interest in shopping         |
 | 2. | ```TRAVEL```     | Shows user's interest in travelling         |
 | 3. | ```BFSI```       | Banking, Financial Services and Insurance         |
 | 4. | ```FOOD```       | Shows user's interest in food         |

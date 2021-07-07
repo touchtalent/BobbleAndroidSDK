@@ -1,10 +1,10 @@
 # Bobble Speech-to-text SDK 
 
-Bobble Speech-to-text SDK provides speech recognition services in top Indic languages. Check supported languages [here](#supported_languages). 
+Bobble Speech-to-text SDK provides speech recognition services in most used Indic languages. Check supported languages [here](#supported_languages). 
 
 ## <a name="implementation_steps"></a>Implementation Steps
 
-- Add and initialise BobbleSDK Core in your project. Refer [here](Readme.md) for steps.
+- Add and initialise BobbleSDK Core in your project. Refer [here](Readme.md#setup) for steps.
 
 - Add following dependency in your application module’s build.gradle.
 ```groovy
@@ -36,9 +36,9 @@ speechToText.startListening(new SpeechToTextListener() {
 
     @Override
     public void onPartialResults(List<String> results) {
-        // Called when user has completed a word. 
+        // Called on every word completion. 
         // Helpful when speech is longer and UI needs to be updated accordingly
-        // Multiple results are provided sorted in descending order or probability.
+        // Multiple results are provided, sorted in descending order of probability.
     }
 
     @Override

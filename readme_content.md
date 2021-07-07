@@ -11,7 +11,7 @@ The SDK hosts a massive repository with more than 100K+ content.
 > *OTF - OTF refers to <b>On The Fly</b>, which is a capability of adding on-demand text layer within a content to give it a personalised touch.
 ## <a name="implementation_steps"></a>Implementation Steps
 
-- Add and initialise BobbleSDK Core in your project. Refer [here](Readme.md) for steps.
+- Add and initialise BobbleSDK Core in your project. Refer [here](Readme.md#setup) for steps.
 
 - Add following dependency in your application module’s build.gradle.
 ```groovy
@@ -21,7 +21,7 @@ implementation 'com.touchtalent.bobblesdk:content'
 Sync your Gradle project to ensure that the dependency is downloaded by the build system.
 
 ## Required Permissions : 
-The SDK requires following permission if you opt for automatic flow (optional) of Bobble Head creation.
+The SDK requires following permission if you opt for [Full fledged head creation activity](#full_fledged) (optional) of Bobble Head creation.
 
 ```xml
 <uses-permission android:name="android.permission.CAMERA" />
@@ -31,7 +31,7 @@ The SDK requires following permission if you opt for automatic flow (optional) o
 ### 1. Bobble Head :
 - Creation - Bobble Heads can be created in 2 ways - *Full fledged head creation activity (includes UI)* and *Raw APIs which convert given selfie into avatar*
 
-Full fledged head creation -
+<a name="full_fledged"></a>Full fledged head creation -
 ```java 
 public class MainActivity extends AppCompatActivity {
     
@@ -49,18 +49,12 @@ public class MainActivity extends AppCompatActivity {
     if (requestCode == REQUEST_CODE) {
         if (resultCode == BobbleHeadCreationAcitivity.RESULT_SUCCESS){
             BobbleHead head = BobbleHead.fromIntentResult(data);
-            //Unique id (local) of head.
-            long headId = head.getId();
-            // Width of Bobble head.
-            int width = head.getWidth();
-            // Height of Bobble head.
-            int height = head.getHeight();
-            // Returns URI of PNG image pointing to the Bobble Head.
-            String headUri = head.getHeadURI();
-            // Get raw PNG image used for head creation
-            String rawUri = head.getRawImageURI();
-            //Get the square enclosing the head 
-            Rect rect = head.getRect();
+            long headId = head.getId(); //Unique id (local) of head.
+            int width = head.getWidth(); // Width of Bobble head.
+            int height = head.getHeight(); // Height of Bobble head.
+            String headUri = head.getHeadURI(); // Returns URI of PNG image pointing to the Bobble Head.
+            String rawUri = head.getRawImageURI(); // Get raw PNG image used for head creation
+            Rect rect = head.getRect(); //Get the square enclosing the head 
         }
     }
 }
@@ -138,17 +132,17 @@ BobblePackManager.fetchPacks(context, builder.build());
 ```java
 List<BobbleContent> contents = pack.getStickerList();
 for (BobbleContent content : contents){
-    long id = content.getId() // Id of content.
+    long id = content.getId() //Id of content.
     ContentType type = content.getType() //Available enum values -> STICKERS | ANIMATED_STICKERS | REGIONAL_GIFS
-    boolean isHeadSupported = content.isHeadSupported();//Check whether the content has support for adding head.
-    boolean previewURI = content.getPreviewURI();// Get URI of a preview of the content.
+    boolean isHeadSupported = content.isHeadSupported(); //Check whether the content has support for adding head.
+    boolean previewURI = content.getPreviewURI(); //Get URI of a preview of the content.
 
     //Create a config for rendering the content 
     BobbleContent.RenderConfig config = new BobbleContent.RenderConfig();
     config.setHead(getBobbleHead()); //Set BobbleHead on the content. The config is ignored if the content doesn't support heads.
     config.setOTF("Happy Birthday!"); //Add a custom text layer on the content for customisation. The string can be max 40 characters long, else will be trimmed.
-    config.setQuaility(HIGH);// Available enum values - HIGH | MEDIUM | LOW. Applied quality works propotional to the device's dpi configuration.
-    config.setBackgroundColor(Color.parse("#FFFFFFFF"));// Apply a background color to the content. Applicable only if the background of content is transparent, else content background will override this.
+    config.setQuaility(HIGH); //Available enum values - HIGH | MEDIUM | LOW. Applied quality works propotional to the device's dpi configuration.
+    config.setBackgroundColor(Color.parse("#FFFFFFFF")); //Apply a background color to the content. Applicable only if the background of content is transparent, else content background will override this.
     
     //Bind the content to a ImageView to render it. Can be used in RecyclerView as well.
     content.bind(config, viewHolder.imageView);
@@ -174,7 +168,7 @@ for (BobbleContent content : contents){
  ```
 
 ### 4. Search for a content:
-Search for a content based on a specific text.
+Search for a content based on a specific query.
 ```java 
 BobbleContentManager.SearchBuilder builder = new BobbleContentManager.SearchBuilder();
 builder.setQuery("Happy Birthday!");
