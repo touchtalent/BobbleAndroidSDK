@@ -1,5 +1,5 @@
 ## Bobble IME SDK
-Bobble IME SDK is a fully functional set of keyboard which can be integrated in any keyboard. The keyboard includes 
+Bobble IME SDK is a fully functional keyboard which can be integrated in any application. The keyboard includes 
 - Global typing support
 - Smooth typing experience
 - Content sharing
