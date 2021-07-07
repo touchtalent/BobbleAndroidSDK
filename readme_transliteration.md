@@ -26,7 +26,7 @@ public class SplashActivity extends Activity {
         setContentView(R.layout.activity_main);
         TransliteratorRequest.Builder builder = new TransliteratorRequest.Builder(this);
         builder.installLanguages("hi", "te");
-        builder.uninstallLangauges("bn");
+        builder.uninstallLanguages("bn");
         builder.addListener(new TransliteratorInstallListener(){
             public void onLanguageDownloaded(String languageIdentifier){
                 ...
@@ -52,7 +52,7 @@ Create an instance of ```BobbleTransliterator``` to start a new transliteration 
 
  ```BobbleTransliterator``` facilitates both <b><i>continuous typing</i></b> as well as <b><i>non-continuous typing</i></b>.
 
-#### continuous Typing
+#### Continuous Typing
 ```void bind(EditText inputBox)``` - The transliterator binds itself with given ```EditText``` and automatically transliterates it, as it receives input events.
 ```java
 EditText input = view.findViewById(R.id.input);
