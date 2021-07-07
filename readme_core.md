@@ -7,7 +7,7 @@ BobbleSDK is a collection of multiple SDKs which can be used to power conversati
 - System architechture (ABIs) supported are [arm64-v8a, armeabi-v7a]
 
 ## BobbleIME 
-Add a fully functional IME within your app with features such as global typing support, content sharing, emojis and BigMojis, keyboard themes, PopText, etc. The IME can be integrated within a app with very minimal efforts. Know more [here](readme_keyboard.md).
+Add a fully functional IME within your app with features such as global typing support, content sharing, emojis and BigMojis, keyboard themes, PopText, etc. The IME can be integrated within any application with very minimal efforts. Know more [here](readme_keyboard.md).
 
 > Apart from the fully functional IME, this SDK also exposes APIs for individual modules (as mentioned below) which can be used to extend those functionalities for deep integration with your application.
 
