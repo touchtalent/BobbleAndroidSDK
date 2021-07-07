@@ -20,7 +20,7 @@ implementation 'com.touchtalent.bobblesdk:content'
 
 Sync your Gradle project to ensure that the dependency is downloaded by the build system.
 
-### Required Permissions : 
+## Required Permissions : 
 The SDK requires following permission if you opt for automatic flow (optional) of Bobble Head creation.
 
 ```xml
@@ -67,183 +67,141 @@ public class MainActivity extends AppCompatActivity {
 ```
 Raw APIs -
 ```java 
-public class MainActivity extends AppCompatActivity {
+BobbleHeadManager.CreationBuilder builder = new BobbleHeadManager.CreationBuilder(uri);
+builder.setGender("male"); //Optional - "male" or "female"
+builder.setAge(25); //Optional
+builder.setLocale("en_IN")// Optional - to fetch localised content 
+builder.setListener(new BobbleHeadProgressListener(){
+    @Override
+    public void onProgress(int progress){
+        //Used to update UI, range of progress = 0-100
+    }
     
-    BobbleHeadCreator headCreator;
+    @Override
+    public void onSuccess(BobbleHead bobbleHead){
+        //Use BobbleHead object as per requirement
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_layout);
-        String uri = fetchSelfieImageURI();
-        headCreator = new BobbleHeadCreator(uri);
-        headCreator.setGender("male"); //Optional - "male" or "female"
-        headCreator.setAge(25); //Optional
-        headCreator.start(this, new BobbleHeadCreationProgressListener(){
-            @Override
-            public void onProgress(int progress){
-                //Used to update UI, range of progress = 0-100
-            }
-            
-            @Override
-            public void onSuccess(BobbleHead bobbleHead){
-                //Use BobbleHead object as per requirement
-            }
-
-            @Override
-            public void onError(int errorCode){
-                //errorCode = ERROR_AUTHORISATION_FAILED
-                //errorCode = ERROR_NO_FACE_DETECTED 
-                //errorCode = ERROR_NO_INTERNET
-                //errorCode = ERROR_UNKNOWN
-            }
-        });
+    public void onError(int errorCode){
+        //errorCode = ERROR_AUTHORISATION_FAILED
+        //errorCode = ERROR_NO_FACE_DETECTED 
+        //errorCode = ERROR_NO_INTERNET
+        //errorCode = ERROR_UNKNOWN
     }
-       
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-}
+});
+BobbleHeadManager.create(this, builder.build());
 ```
 -   Manage created heads
 
 ```java
-    BobbleHeadManager manager = new BobbleHeadManager();
-    
-    //Fetch created heads
-    manager.fetchCreatedHeads(context, new BobbleHeadListener(){
-        public void onHeadsFetched(List<BobbleHead> heads){
-            //Empty list if no head exists.
-        }
-    })
+//Fetch created heads
+BobbleHeadManager.fetchCreatedHeads(context, new BobbleHeadListener(){
+    public void onHeadsFetched(List<BobbleHead> heads){
+        //Empty list if no head exists.
+    }
+})
 
-    //Delete a head
-    BobbleHead head = getHeadToBeDeleted();
-    manager.delete(head.getId());
+//Delete a head
+BobbleHead head = getHeadToBeDeleted();
+BobbleHeadManager.delete(head.getId());
 ```
-### 2. Sticker and regional GIFs packs :
+### 2. Sticker packs and Regional GIF packs :
 
 A content pack is a collection of Sticker or regional GIFs. Each pack is accompanied with a icon, name, date released and either a list of stickers, animated stickers or regional GIFs. 
 
-```java 
-BobblePackManager packManager = new BobblePackManager();
-packManager.fetchStickerPacks(this, new StickerPackListener(){
+```java
+BobblePackManager.RequestBuilder builder = new BobblePackManager.RequestBuilder(STICKERS) // Available enum values -> STICKERS | ANIMATED_STICKERS | REGIONAL_GIFS
+builder.blockAgeRestrictedContent(true) // Optional, true to block age restricted content.
+builder.setListener(new BobblePackListener(){
 
     @Override
-    public void onSuccess(List<BobbleStickerPack> bobblePacks){
-        for (BobbleStickerPack pack : bobblePacks){
+    public void onSuccess(List<BobblePack> bobblePacks){
+        for (BobblePack pack : bobblePacks){
             long id = pack.getId() // Id of pack.
             String icon = pack.getIconURI() // Get URI pointing to icon image.
             String name = pack.getName() // Get name of package.
-            pack.getStickerList() // Get 
+            List<BobbleContent> stickers = pack.getStickerList() // Get list of stickers in the pack.
         }
     }
+
+    @Override
+    public void onError(int errorCode){
+        //errorCode = ERROR_AUTHORISATION_FAILED
+        //errorCode = ERROR_NO_PACKS_FOUND 
+        //errorCode = ERROR_NO_INTERNET
+        //errorCode = ERROR_UNKNOWN
+    }
+
 });
-packManager.fetchAnimatedStickerPacks
+BobblePackManager.fetchPacks(context, builder.build());
 ```
-### Get Default Sticker Pack List :
- There are two types of sticker one is static sticker and second one animated sticker. both stickers have same packId.
-``` 
-List<BobbleContentPacks> StickerPackList = BobbleContentPackManager.getDefaultStickerPack(context).listener(new 
-          BobbleContentPackListener() {    
-          @Override                     
-          public void onSuccess(List<BobbleContentPacks> stickerPackList){                        
-                int packId = stickerPackList.getPackId(); 
-                String packName = stickerPackList.getPackName(); 
-                String PackIconURL = stickerPackList.getPackIcon(); 
-                String isSupportBobbleAvatar =stickerPackList.isSupportBobbleAvatar() ; // if sticker pack support bobble avatar then isSupportBobbleAvatar will return true otherwise false.
-                String bannerImage = stickerPackList.getBannerImage();
 
-          }                    
-         @Override
-         public void onFailure(Error e) {         
-               Log.e("TAG", e.getMessage);                   
-         }  
-      }).start();
+### 3. BobbleContent :
+```BobbleContent``` is a object that represents a particular content (sticker, animated sticker, regional GIFs). The content can be rendered on a ImageView, fetched as a Drawable or a local file URI.
+```java
+List<BobbleContent> contents = pack.getStickerList();
+for (BobbleContent content : contents){
+    long id = content.getId() // Id of content.
+    ContentType type = content.getType() //Available enum values -> STICKERS | ANIMATED_STICKERS | REGIONAL_GIFS
+    boolean isHeadSupported = content.isHeadSupported();//Check whether the content has support for adding head.
+    boolean previewURI = content.getPreviewURI();// Get URI of a preview of the content.
 
- ```
-### Get Default Regional GIF Pack List :
-``` 
-BobbleContentPackManager.getDefaultRegionalGIFsPack(context).listener(new 
-          BobbleContentPackListener() {    
-          @Override                     
-          public void onSuccess(List<BobbleContentPacks> regionalGIFsPackList){                        
-   
+    //Create a config for rendering the content 
+    BobbleContent.RenderConfig config = new BobbleContent.RenderConfig();
+    config.setHead(getBobbleHead()); //Set BobbleHead on the content. The config is ignored if the content doesn't support heads.
+    config.setOTF("Happy Birthday!"); //Add a custom text layer on the content for customisation. The string can be max 40 characters long, else will be trimmed.
+    config.setQuaility(HIGH);// Available enum values - HIGH | MEDIUM | LOW. Applied quality works propotional to the device's dpi configuration.
+    config.setBackgroundColor(Color.parse("#FFFFFFFF"));// Apply a background color to the content. Applicable only if the background of content is transparent, else content background will override this.
+    
+    //Bind the content to a ImageView to render it. Can be used in RecyclerView as well.
+    content.bind(config, viewHolder.imageView);
 
-          }                    
-         @Override
-         public void onFailure(Error e) {         
-               Log.e("TAG", e.getMessage);                   
-         }  
-      }).start();
- ```
+    //Fetch content as a drawable
+    content.createDrawable(config, new DrawableListener(){
+        public void onReady(Drawable drawable){
+        }
 
-### Get Avatar List :
-``` 
-          BobbleAvatarListManager.getAvatarList(context).listener(new 
-          BobbleAvatarListener() {    
-          @Override                     
-          public void onSuccess(List<BobbleAvatar> bobbleAvatarList){                        
-   
+        public void onFailed(){
+        }
+    });
+    
+    //Fetch content as a drawable
+    content.createFileURI(config, new FileURIListener(){
+        public void onReady(String uri){
+        }
 
-          }                    
-         @Override
-         public void onFailure(Error e) {         
-               Log.e("TAG", e.getMessage);                   
-         }  
-      }).start();
+        public void onFailed(){
+        }
+    });
+}
  ```
 
-### To Create Sticker / Regional GIFs :
-``` 
- BobbleContentCreation createContent = new BobbleContentCreation(); 
-.setOtf(string otf) //text for draw text on content - optional
-.setFace(BobbleAvatar bobbleAvatar) // set face obect - optional
-.setWatermarkWithPosition(String watermarkimageUri, int position, float height, float width) // position value is static variable: LEFT_TOP,LEFT_BOTTOM,RIGHT_TOP,RIGHT_BOTTOM - optional
-.setMaxNumberOfContent(int maxStickerSize) // return less than maxStickerSize stickers - optional
-.setPageNumber(int pageNumber) // this is used for pagination . - optional
-.setContentInPage(int numberOfStickers) // Number of content in each page - optional
-.setContentType(int type) // type value are BobbleContentConstant.STICKER ,BobbleContentConstant.ANIMATED_STICKER ,BobbleContentConstant.REGIONAL_GIF  
-.listener(new ContentListener() {    
-          @Override                     
-          public void onSuccess(List <ContentObeject> contentObejectList){                        
-          //Do the operation here 
-           for(ContentObeject contentObeject : contentObejectList) {
-                // contentObject.getStickerId() // return sticker Id
-                // contentObect.getPackId() // return packId
-                //contentObject.getContentUri(); // // return internal storage URI of final content 
-               //contentObject.getHeight();  // return height of content
-               //contentObject.getWidth(); // return width of content
+### 4. Search for a content:
+Search for a content based on a specific text.
+```java 
+BobbleContentManager.SearchBuilder builder = new BobbleContentManager.SearchBuilder();
+builder.setQuery("Happy Birthday!");
+builder.allowTypes(STICKERS, ANIMATED_STICKERS); //Available enum values -> STICKERS | ANIMATED_STICKERS | REGIONAL_GIFS, Searches for only STICKERS by default.
+builder.blockAgeRestrictedContent(true) // Optional, true to block age restricted content.
+SearchConfig config = builder.build();
 
-            }
-          }                    
-         @Override
-         public void onFailure(Error e) {         
-               Log.e("TAG", e.getMessage);                   
-         }  
- }).create();
+//Page size and page number for pagination.
+int pageSize = 10;
+int pageNumber = 0;
+BobbleContentManager.searchContent(config, pageSize, pageNumber, new ContentSearchListener(){
+    @Override
+    public void onResponse(List<BobbleContent> contents){
 
-```
+    }
 
-In above code snippet, this will return trending content.
+    @Override
+    public void onError(int errorCode){
+        //errorCode = ERROR_AUTHORISATION_FAILED
+        //errorCode = ERROR_INVALID_PARAMS 
+        //errorCode = ERROR_NO_INTERNET
+        //errorCode = ERROR_END_OF_PAGE
+    }
 
-you can get relevant content searched by user. you have to add this:
- 
-``` 
-createContent.setSearchedStickerByText(String inputText)
-```
-
-if you want to get content by pack Id: 
-
-``` 
-createContent.setPackId(int packId) 
-```
-
-if you want to get content by content Id: 
-
-``` 
-createContent.setContentId(int contentId) 
-```
-
-
+})
+ ```
