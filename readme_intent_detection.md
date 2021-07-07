@@ -1,6 +1,6 @@
 # Bobble Intent Detection SDK
 
-Bobble Intent Detection SDK is an on-device detection approach powered by BobbleAI. Our AI Model processes an input text and derive the user's intent out of it without the user's data actually leaving the user's device.
+Bobble Intent Detection SDK is an on-device detection approach powered by BobbleAI. Our AI Model processes an input text and derives the user's intent out of it without user's data actually leaving the user's device.
 
 * Fast - It is an AI-Based model which works on the user's device itself for getting the exact intent from the text messages.
 * Lightweight - It is light weighted, the AI model used is < 1MB.
