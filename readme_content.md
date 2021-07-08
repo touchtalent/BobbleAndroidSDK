@@ -28,7 +28,68 @@ The SDK requires following permission if you opt for [Full fledged head creation
 ```
 ##  Bobble Content APIs:
 
-### 1. Bobble Head :
+Bobble Content can be integrated by 2 methods depending on requirements.
+
+### 1. BobbleContentView
+```BobbleContentView``` imports a complete view showing different formats of contents. The UI is customizable via themes and interaction with content can be captured via listeners. The view handles multiple functionalities :
+
+- Display content and capture user interactions with them.
+- Search option to query based content search.
+- Host content stores for browsing content packs.
+- Bobble Head creation and management. 
+
+#### i. Define a custom theme to customize the look of the UI
+
+```xml
+<style name="CustomTheme" parent="BobbleContentViewTheme" >
+    <item name="ascentColorPrimary">@color/ascentColor</item>
+    <item name="ascentColorLight">@color/ascentColor</item>
+    <item name="topBarColor">@color/topBarColor</item>        
+    <item name="bottomBarColor">@color/bottomBarColor</item>
+    <item name="dividerColor">@color/dividerColor</item>        
+    <item name="cardColor">@color/cardColor</item>        
+    <item name="stickerIcon">@drawable/ic_sticker_icon</item>        
+    <item name="animatedStickerIcon">@drawable/ic_animated_sticker_icon</item>        
+    <item name="regionalGIFIcon">@drawable/ic_regional_gif_icon</item>        
+    <item name="searchIcon">@drawable/ic_search_icon</item>        
+</style>
+```
+#### ii. Add custom view inside a XML layout of your Activity/Fragment
+```xml
+<com.touchtalent.bobblesdk.content.BobbleContenView
+    style = "@style/CustomTheme"
+    android:id="@+id/contentView"
+    android:layout_width="match_parent"
+    android:layout_height="500dp"/>
+```
+#### iii. APIs
+Add listeners to capture user's interaction with the content.
+
+```java
+public class MainActivity extends Activity {
+
+    BobbleContentView contentView;
+    
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        contentView = findViewById(R.id.contentView);
+        
+        contentView.setListener(new ContentInteractionListener(){
+            
+            @Override
+            public void onSelectContent(String uri){
+                //Called when user taps on any of the content.
+                //The uri points to the local path of the content that user tapped on.
+            }
+        })
+    }
+}
+```
+
+### 2. API based
+#### i. Bobble Head :
 - Creation - Bobble Heads can be created in 2 ways - *Full fledged head creation activity (includes UI)* and *Raw APIs which convert given selfie into avatar*
 
 <a name="full_fledged"></a>Full fledged head creation -
@@ -98,7 +159,7 @@ BobbleHeadManager.fetchCreatedHeads(context, new BobbleHeadListener(){
 BobbleHead head = getHeadToBeDeleted();
 BobbleHeadManager.delete(head.getId());
 ```
-### 2. Sticker packs and Regional GIF packs :
+#### ii. Sticker packs and Regional GIF packs :
 
 A content pack is a collection of Sticker or regional GIFs. Each pack is accompanied with a icon, name, date released and either a list of stickers, animated stickers or regional GIFs. 
 
@@ -127,7 +188,7 @@ builder.setListener(new BobblePackListener(){
 BobblePackManager.fetchPacks(context, builder.build());
 ```
 
-### 3. BobbleContent :
+#### iii. BobbleContent :
 ```BobbleContent``` is a object that represents a particular content (sticker, animated sticker, regional GIFs). The content can be rendered on a ImageView, fetched as a Drawable or a local file URI.
 ```java
 List<BobbleContent> contents = pack.getStickerList();
@@ -167,7 +228,7 @@ for (BobbleContent content : contents){
 }
  ```
 
-### 4. Search for a content:
+#### iv. Search for a content:
 Search for a content based on a specific query.
 ```java 
 BobbleContentManager.SearchBuilder builder = new BobbleContentManager.SearchBuilder();
