@@ -38,7 +38,7 @@ allprojects {
 - Add the following line to the dependencies element in your application module’s build.gradle.
 
 ```groovy
-    implementation 'com.touchtalent.bobblekeyboard:keyboard:2.0.3.000'
+    implementation 'com.touchtalent.bobblesdk:keyboard:2.0.3.000'
 ```
 
 - Sync your Gradle project to ensure that the dependency is downloaded by the build system.
@@ -91,17 +91,11 @@ BobbleIMESDK.initialise(applicationContext)
 
 ### <a name="step6"></a>Step 6: Create your custom IME Class
 Create a custom class declared in the manifest above.
-Override the ```onQuickAccessIconTap()``` function to handle the clicks on branded icon on the keyboard.
 ```java
 import com.touchtalent.bobbleime.services.BobbleIME;
 
 class CustomIME extends BobbleIME {
-    @Override
-    public void onQuickAccessIconTap() {
-        Intent intent = new Intent(this, <deep_link_activity>.class);
-        intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-    }
+    
 }
 ```
 ### <a name="step7"></a>Step 7: Refactor WebViews used within main process.
@@ -133,7 +127,7 @@ public class CustomWebView extends WebView {
 
     @Override
     public InputConnection onCreateInputConnection(EditorInfo outAttrs) {
-        outAttrs.privateImeOptions = "BobbleBuggyEditText";
+        outAttrs.privateImeOptions = "BobbleWebEditText";
         return super.onCreateInputConnection(outAttrs);
     }
 }
