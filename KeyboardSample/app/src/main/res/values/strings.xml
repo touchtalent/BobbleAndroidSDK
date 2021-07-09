@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">Keyboard Sample</string>
+    <string name="x">X</string>
+    <string name="change_language">Change Language</string>
+    <string name="open_webview">Open Webview</string>
+    <string name="keyboard_setup_complete_try_it_out_here">Keyboard setup complete. Try it out here…</string>
+    <string name="enable_keyboard_step_2">Enable Keyboard (Step-2)</string>
+    <string name="enable_keyboard_step_1">Enable Keyboard (Step-1)</string>
+	<string name="app_name">Your Brand Keyboard</string>
+    <string name="custom_input_method">Your Brand Keyboard</string>
+    <string name="title_bobblekeyboard">Your Brand Keyboard</string>
+    <string name="title_activity_web_view">WebViewActivity</string>
+    <string name="partner_text">Bobble Keyboard SDK -> Your Brand Keyboard</string>
+    <string name="partner_sub_text">This is a sample app that demonstrates the usage and working of BobbleIME SDK.</string>
+    <string name="launch_promotional_activity">Launch Promotional Activity</string>
+    <string name="personalise_your_keyboard">Welcome to Your Brand Keyboard!</string>
+    <string name="sample_deep_link">This is a sample deep link activity</string>
 </resources>
