@@ -6,6 +6,14 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
+    signingConfigs {
+        release {
+            storeFile file('../temporary.jks')
+            storePassword 'temporary'
+            keyAlias 'temporary'
+            keyPassword 'temporary'
+        }
+    }
     defaultConfig {
         applicationId "com.touchtalent.bobblekeyboard.sample"
         minSdkVersion 18
@@ -23,7 +31,8 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            signingConfig signingConfigs.release
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
