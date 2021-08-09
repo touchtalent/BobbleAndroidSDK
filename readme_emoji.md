@@ -22,7 +22,7 @@ Sync your Gradle project to ensure that the dependency is downloaded by the buil
 
 ```java
 BobbleEmojiSuggestions emojiSuggestions = new BobbleEmojiSuggestions();
-emojiSuggestions.setLanguage("hi") // Optional, for targetting a particular language.
+emojiSuggestions.setLanguage("hi") // Optional, for targetting a particular language. When this is not used, language would be automatically detected.
 ```
 
 2. Get emoji suggestions by calling getEmojis()
