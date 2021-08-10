@@ -1,7 +1,7 @@
   
 # Bobble Language Detection SDK
 
-Bobble Language Detection SDK is an input tool that can be integrated into any Android app to detect language from an input text. In addition to listed languages, it can detect language for macaronic text as well like Hinglish, Bengalish and Malayalish etc. Currently, [85 languages](#supported_languages) are supported.
+Bobble Language Detection SDK is an input tool that can be integrated into any Android app to detect language from an input text. In addition to known languages, it can detect language for macaronic text as well like Hinglish, Bengalish and Malayalish etc. Currently, [85 languages](#supported_languages) are supported.
 
 ## <a name="setting_up"></a>Setting Up
 
