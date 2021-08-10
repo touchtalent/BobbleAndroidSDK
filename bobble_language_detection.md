@@ -1,7 +1,7 @@
   
 # Bobble Language Detection SDK
 
-Bobble Language Detection SDK is an input tool that can be integrated into any Android app to detect language from an input text. In addition to listed languages, it can detect language for macaronic text as well like Hinglish, Bengalish and Malayalish etc. Currently, [83 languages](#supported_languages) are supported.
+Bobble Language Detection SDK is an input tool that can be integrated into any Android app to detect language from an input text. In addition to listed languages, it can detect language for macaronic text as well like Hinglish, Bengalish and Malayalish etc. Currently, [85 languages](#supported_languages) are supported.
 
 ## <a name="setting_up"></a>Setting Up
 
@@ -109,73 +109,75 @@ public class MainActivity extends Activity {
 |11| Punjabi, Gurmukhi    | pa_IN         |
 |12| Assamese             | as_IN         |
 |13| Maithili             | mai_IN   |
-|14| Sindhi, Devanagari   | sd_IN    |
-|15| Kashmiri, Devanagari | ks_IN    |
-|16| Dogri, Devanagari    | doi_IN       |
-|17| Konkani, Devanagari  | kok_IN   |
-|18| Bodo, Devanagari     | brx_IN   |
-|19| Sanskrit             | sa_IN         |
-|20| Bhojpuri             | bho_IN   |
-|21| Marwari (India)      | mwr_IN   |
-|22| Nepali (India)       | ne_IN         |
-|23| Ahirani              | ahr        |
-|24| Awadhi               | awa        |
-|25| Bagheli              | bfy        |
-|26| Bagri (India)        | bgq\_dev   |
-|27| Bagri (Pakistan)     | bgq\_arab  |
-|28| Sinhala              | si_LK         |
-|29| Tulu                 | tcy        |
-|30| Bhili, Devanagari    | bhb\_dev   |
-|31| Bhili, Gujarati      | bhb\_gujr  |
-|32| Bishnupriya          | bpy\_beng  |
-|33| Bodo, Bengali        | brx\_beng  |
-|34| Brahui               | brh\_urdu  |
-|35| Bundeli              | bns\_dev   |
-|36| Chhattisgarhi        | hne\_dev   |
-|37| Chittagonian         | ctg\_beng  |
-|38| Dhundhari            | dhd\_hindi |
-|39| Dogri, Arabic        | doi\_arab  |
-|40| Garhwali             | gbm\_dev   |
-|41| Garo                 | grt\_beng  |
-|42| Godwari              | gdx\_dev   |
-|43| Gujari (India)       | gju\_dev   |
-|44| Gujari (Pakistan)    | gju\_arab  |
-|45| Halbi, Devanagari    | hlb\_dev   |
-|46| Halbi, Odia          | hlb\_oria  |
-|47| Harauti              | hoj\_dev   |
-|48| Haryanvi             | bgc\_dev   |
-|49| Kannauji,Transliteration              | bjj\_dev   ||
-|50| Kashmiri, Arabic     | ks\_arab   |
-|51| Kok Borok, Bengali   | trp\_beng  |
-|52| Konkani, Kannada     | kok\_knda  |
-|53| Korku                | kfq\_dev   |
-|54| Kumaoni              | kfy\_dev   |
-|55| Kurukh, Devanagari   | kru\_dev   |
-|56| Kurukh, Malayalam    | kru\_mylm  |
-|57| Lambadi, Devanagari  | lmn\_dev   |
-|58| Lambadi, Telugu      | lmn\_telu  |
-|59| Lambadi, Kannada     | lmn\_knda  |
-|60| Magahi (India)       | mag\_dev   |
-|61| Malvi                | mup\_dev   |
-|62| Mandeali             | mjl\_dev   |
-|63| Manipuri, Bengali    | mni\_beng  |
-|64| Marwari (Pakistan)   | mwr\_arab  |
-|65| Mewari               | mtr\_dev   |
-|66| Nimadi               | noe\_dev   |
-|67| Northern Hindko      | hno\_arab  |
-|68| Pahari-Potwari       | phr\_arab  |
-|79| Pashto               | ps\_arab   |
-|70| Punjabi, Arabic      | pa\_arab   |
-|71| Rangpuri, Devanagari | rkt\_dev   |
-|72| Santali, Bengali     | sat\_beng  |
-|73| Sindhi, Arabic       | sd \_urdu  |
-|74| Hinglish       | en\_hi  |
-|75| Bengalish       | en \_bn  |
-|76| Malayalish       | en \_ml  |
-|77| Marathish       | en \_mr  |
-|78| Punjabish       | en \_pa  |
-|79| Gujaratish       | en \_gu  |
-|80| Teleguish       | en \_te  |
-|81| Tamilish       | en \_ta |
-|82| Kannadish       | en \_kn  |
-|83| Sinhalish       | en\_si_lk  |
+|14| Santhali, Devanagari   | sat_IN    |
+|15| Sindhi, Devanagari   | sd_IN    |
+|16| Kashmiri, Devanagari | ks_IN    |
+|17| Dogri, Devanagari    | doi_IN       |
+|18| Konkani, Devanagari  | kok_IN   |
+|19| Bodo, Devanagari     | brx_IN   |
+|20| Sanskrit             | sa_IN         |
+|21| Bhojpuri             | bho_IN   |
+|22| Marwari (India)      | mwr_IN   |
+|23| Nepali (India)       | ne_IN         |
+|24| Rajasthani (India)       | raj_IN         |
+|25| Ahirani              | ahr        |
+|26| Awadhi               | awa        |
+|27| Bagheli              | bfy        |
+|28| Bagri (India)        | bgq\_dev   |
+|29| Bagri (Pakistan)     | bgq\_arab  |
+|30| Sinhala              | si_LK         |
+|31| Tulu                 | tcy        |
+|32| Bhili, Devanagari    | bhb\_dev   |
+|33| Bhili, Gujarati      | bhb\_gujr  |
+|34| Bishnupriya          | bpy\_beng  |
+|35| Bodo, Bengali        | brx\_beng  |
+|36| Brahui               | brh\_urdu  |
+|37| Bundeli              | bns\_dev   |
+|38| Chhattisgarhi        | hne\_dev   |
+|39| Chittagonian         | ctg\_beng  |
+|40| Dhundhari            | dhd\_hindi |
+|41| Dogri, Arabic        | doi\_arab  |
+|42| Garhwali             | gbm\_dev   |
+|43| Garo                 | grt\_beng  |
+|44| Godwari              | gdx\_dev   |
+|45| Gujari (India)       | gju\_dev   |
+|46| Gujari (Pakistan)    | gju\_arab  |
+|47| Halbi, Devanagari    | hlb\_dev   |
+|48| Halbi, Odia          | hlb\_oria  |
+|49| Harauti              | hoj\_dev   |
+|50| Haryanvi             | bgc\_dev   |
+|51| Kannauji,Transliteration              | bjj\_dev   ||
+|52| Kashmiri, Arabic     | ks\_arab   |
+|53| Kok Borok, Bengali   | trp\_beng  |
+|54| Konkani, Kannada     | kok\_knda  |
+|55| Korku                | kfq\_dev   |
+|56| Kumaoni              | kfy\_dev   |
+|57| Kurukh, Devanagari   | kru\_dev   |
+|58| Kurukh, Malayalam    | kru\_mylm  |
+|59| Lambadi, Devanagari  | lmn\_dev   |
+|60| Lambadi, Telugu      | lmn\_telu  |
+|61| Lambadi, Kannada     | lmn\_knda  |
+|62| Magahi (India)       | mag\_dev   |
+|63| Malvi                | mup\_dev   |
+|64| Mandeali             | mjl\_dev   |
+|65| Manipuri, Bengali    | mni\_beng  |
+|66| Marwari (Pakistan)   | mwr\_arab  |
+|67| Mewari               | mtr\_dev   |
+|68| Nimadi               | noe\_dev   |
+|69| Northern Hindko      | hno\_arab  |
+|70| Pahari-Potwari       | phr\_arab  |
+|71| Pashto               | ps\_arab   |
+|72| Punjabi, Arabic      | pa\_arab   |
+|73| Rangpuri, Devanagari | rkt\_dev   |
+|74| Santali, Bengali     | sat\_beng  |
+|75| Sindhi, Arabic       | sd \_urdu  |
+|76| Hinglish       | en\_hi  |
+|77| Bengalish       | en \_bn  |
+|78| Malayalish       | en \_ml  |
+|79| Marathish       | en \_mr  |
+|80| Punjabish       | en \_pa  |
+|81| Gujaratish       | en \_gu  |
+|82| Teleguish       | en \_te  |
+|83| Tamilish       | en \_ta |
+|84| Kannadish       | en \_kn  |
+|85| Sinhalish       | en\_si_lk  |
