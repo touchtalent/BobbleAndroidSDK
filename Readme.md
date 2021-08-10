@@ -19,6 +19,8 @@ Add a fully functional IME within your app with features such as global typing s
 - [On-device Intent detection](readme_intent_detection.md) - Process an input text and derive user's intent out of it without user's data actually leaving user's device. E.g - <i>"naya mobile chaiye lekin paise nahi hai yaar" -> Intents - <b>Shopping</b>, <b>Loan</b></i>
 - [Avatar, Stickers, Animated Stickers, Regional GIFs](readme_content.md) - Convert your user's selfies into fun personalised avatars <i>(Bobble Head)</i> which can be used independently as well as with large repository of personalised and expressive content formats(100K+).
 - [Speech to Text](readme_speech_to_text.md) - Transcribe speech to text in 9 most used Indic langauges. 
+- [Language Detection](bobble_language_detection.md) - Process an input text and detect language from it.
+
 
 ### <a name="setup"></a>Setting Up
 
