@@ -48,22 +48,22 @@ Create an instance of ```BobbleLanguageDetector``` to start a new detection sess
 >```
 
 Use following to detect the language
-```LanguageDetectionResponse detectLanguage(String input)```
+```LanguageDetectionResponse detectLanguage(String text)```
 
 ```java
 BobbleLanguageDetector languageDetector = new BobbleLanguageDetector();
-LanguageDetectionResponse response = languageDetector.detectLanguage(text, new DetectorInstallListener(){
-	public void onSuccess(LanguageDetectionResponse response) {
-	      ...
-	   // Display list of detected languages sorted by detection confidence.   
-	   for (LanguageDetected language : response.getLanguagesList()) {   
-		String code = language.getCode();
-		double confidence = language.getConfidence(); //ranges between 0 - 1.
-	   }
-    	}
+languageDetector.detectLanguage(text, new DetectionListener(){
+    public void onSuccess(LanguageDetectionResponse response) {
+    	...
+	// Display list of detected languages sorted by detection confidence.   
+	for (LanguageDetected language : response.getLanguagesList()) {   
+	   String code = language.getCode();
+	   double confidence = language.getConfidence(); //ranges between 0 - 1.
+	}
+    }
 	
-	public void onError(BobbleError error){
-   	}
+    public void onError(BobbleError error){
+    }
 });  
 
 ```
