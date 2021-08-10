@@ -53,7 +53,7 @@ Use following to detect the language
 ```java
 BobbleLanguageDetector languageDetector = new BobbleLanguageDetector();
 LanguageDetectionResponse response = languageDetector.detectLanguage(text, new DetectorInstallListener(){
-	public void onComplete() {
+	public void onSuccess(LanguageDetectionResponse response) {
 	      ...
 	   // Display list of detected languages sorted by detection confidence.   
 	   for (LanguageDetected language : response.getLanguagesList()) {   
