@@ -30,7 +30,7 @@ public class SplashActivity extends Activity {
                 ...
             }
 
-            public void onError(String error){
+            public void onError(BobbleError error){
                 
             }
         });
@@ -62,7 +62,7 @@ LanguageDetectionResponse response = languageDetector.detectLanguage(text, new D
 	   }
     	}
 	
-	public void onError(String error){
+	public void onError(BobbleError error){
    	}
 });  
 
