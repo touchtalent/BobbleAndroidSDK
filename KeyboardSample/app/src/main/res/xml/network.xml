@@ -1,0 +1,14 @@
+<network-security-config>
+    <debug-overrides>
+        <trust-anchors>
+            <!-- Trust user added CAs while debuggable only -->
+            <certificates src="user" />
+        </trust-anchors>
+    </debug-overrides>
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">http://apis.appnxt.net</domain>
+    </domain-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">admin.appnext.com</domain>
+    </domain-config>
+</network-security-config>

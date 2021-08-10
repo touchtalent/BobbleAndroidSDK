@@ -1,7 +1,7 @@
 
 # Bobble Contextual Emoji Suggestion SDK
 
-Bobble Contextual Emoji Suggestion SDK is a tool that can be integrated into any Android app to contextually detect emotions contained within a text message and suggest emojis based on it. Currently, [68 languages](#supported_languages) are supported.
+Bobble Contextual Emoji Suggestion SDK is a tool that can be integrated into any Android app to contextually detect emotions contained within a text message and suggest emojis based on it. Currently, [79 languages](#supported_languages) are supported.
 
 ## <a name="implementation_steps"></a>Setting Up
 
@@ -22,7 +22,7 @@ Sync your Gradle project to ensure that the dependency is downloaded by the buil
 
 ```java
 BobbleEmojiSuggestions emojiSuggestions = new BobbleEmojiSuggestions();
-emojiSuggestions.setLanguage("hi") // Optional, for targetting a particular language. When this is not used, language would be automatically detected.
+emojiSuggestions.setLanguage("hi") // Optional, for targetting a particular language. When this is not used, language is automatically detected from text.
 ```
 
 2. Get emoji suggestions by calling getEmojis()
@@ -70,70 +70,80 @@ public class MainActivity extends Activity {
 |-----| --------------       |
 |1| English (India)        |
 |2| Hindi / हिन्दी            |
-|2| Bangla / বাংলা               |
-|3| Marathi / मराठी              |
-|4| Telugu / తెలుగు                |
-|5| Tamil / தமிழ்             |
-|6| Gujarati / ગુજરાતી       |
-|7| اردو / Urdu    |
-|8| Kannada / ಕನ್ನಡ              |
-|9| Odia / ଓଡ଼ିଆ                 |
-|10| Malayalam / മലയാളം             |
-|11| Punjabi / ਪੰਜਾਬੀ            |
-|12| Assamese / অসমীয়া       |
-|13| Acehnese               |
-|14| Balinese              |
-|15| Banjarese        |
-|16| العَرَبِيَّة / Arabic     |
-|17| Armenian / հայերէն              |
-|18| Azerbaijani / Azərbaycan    |
-|19| Bahasa Indonesia                 |
-|20| Javanese    |
-|21| Madurese      |
-|22|Batak Karo             
-|23|Minangkabau                    |       
-|24|Sundanese                  |
-|25|Catalan / Català           |
-|26|Croatian / Hrvatski        |
-|27|Danish / Dánský        |
-|28|Banggai                |
-|29|Dutch / Nederlands         |
-|30|Estonian / Eesti           |
-|31|Finnish / Suomi            |
-|32|Bangka Malay           |
-|33|Georgian / ქართული         |
-|34|German / Deutsch           |
-|35|Greek / Ελληνικά           |
-|36|Batak Toba         |
-|37|Hungarian / Magyar|
-|38|Buginese|
-|39|Italian / Italiano|
-|40|Kazakh / Қазақ|
-|41|Gayo|
-|42|Gorontalo|
-|43|Hawu|
-|44|Latvian / Latviešu|
-|45|Jambi Malay|
-|46|Lithuanian / Lietuvių|
-|47|Komering|
-|48|Macedonian / Mакедонски|
-|49|Lampung api|
-|50|Malay / Bahasa Melayu|
-|51|Makassar Malay|
-|52|Mandar|
-|53|Manggarai|
-|54|Mongondow|
-|55|Muna|
-|56|Nepali / नेपाली|
-|57|Ngaju Dayak|
-|58|Norwegian / Norsk|
-|59|Persian / فارسی|
-|60|Polish / Polski|
-|61|Portuguese (BR) / Português|
-|62|Portuguese (PT)/ Português|
-|63|Sinhala/සිංහල|
-|64|Spanish / Español|
-|65|Spanish / Latinoamérica|
-|66|Sasak|
-|67|Tamil/தமிழ் (Srilanka)|
-|68|Tetum|
+|3| Hinglish            |
+|4| Bangla / বাংলা               |
+|5| Banglish               |
+|6| Marathi / मराठी              |
+|7| Marathinglish               |
+|8| Telugu / తెలుగు                |
+|9| Tenglish                |
+|10| Tamil / தமிழ்             |
+|11| Tanglish                |
+|12| Gujarati / ગુજરાતી       |
+|13| Gujaratinglish       |
+|14| اردو / Urdu    |
+|15| Kannada / ಕನ್ನಡ              |
+|16| Kanglish              |
+|17| Odia / ଓଡ଼ିଆ                 |
+|18| Odinglish                 |
+|19| Malayalam / മലയാളം             |
+|20| Manglish             |
+|21| Punjabi / ਪੰਜਾਬੀ            |
+|22| Punglish             |
+|23| Assamese / অসমীয়া       |
+|24| Acehnese               |
+|25| Balinese              |
+|26| Banjarese        |
+|27| العَرَبِيَّة / Arabic     |
+|28| Armenian / հայերէն              |
+|29| Azerbaijani / Azərbaycan    |
+|30| Bahasa Indonesia                 |
+|31| Javanese    |
+|32| Madurese      |
+|33|Batak Karo             
+|34|Minangkabau                    |       
+|35|Sundanese                  |
+|36|Catalan / Català           |
+|37|Croatian / Hrvatski        |
+|38|Danish / Dánský        |
+|39|Banggai                |
+|40|Dutch / Nederlands         |
+|41|Estonian / Eesti           |
+|42|Finnish / Suomi            |
+|43|Bangka Malay           |
+|44|Georgian / ქართული         |
+|45|German / Deutsch           |
+|46|Greek / Ελληνικά           |
+|47|Batak Toba         |
+|48|Hungarian / Magyar|
+|49|Buginese|
+|50|Italian / Italiano|
+|51|Kazakh / Қазақ|
+|52|Gayo|
+|53|Gorontalo|
+|54|Hawu|
+|55|Latvian / Latviešu|
+|56|Jambi Malay|
+|57|Lithuanian / Lietuvių|
+|58|Komering|
+|59|Macedonian / Mакедонски|
+|60|Lampung api|
+|61|Malay / Bahasa Melayu|
+|62|Makassar Malay|
+|63|Mandar|
+|64|Manggarai|
+|65|Mongondow|
+|66|Muna|
+|67|Nepali / नेपाली|
+|68|Ngaju Dayak|
+|69|Norwegian / Norsk|
+|70|Persian / فارسی|
+|71|Polish / Polski|
+|72|Portuguese (BR) / Português|
+|73|Portuguese (PT)/ Português|
+|74|Sinhala/සිංහල|
+|75|Spanish / Español|
+|76|Spanish / Latinoamérica|
+|77|Sasak|
+|78|Tamil/தமிழ் (Srilanka)|
+|79|Tetum|
