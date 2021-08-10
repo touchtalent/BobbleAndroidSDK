@@ -48,7 +48,7 @@ Create an instance of ```BobbleLanguageDetector``` to start a new detection sess
 >```
 
 Use following to detect the language
-```LanguageDetectionResponse detectLanguage(String input)``` - Pass the complete input to get the detected langauge. 
+```LanguageDetectionResponse detectLanguage(String input)```
 
 ```java
 BobbleLanguageDetector languageDetector = new BobbleLanguageDetector();
