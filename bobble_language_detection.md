@@ -1,3 +1,4 @@
+  
 # Bobble Language Detection SDK
 
 Bobble Language Detection SDK is an input tool that can be integrated into any Android app to detect language from an input text. In addition to listed languages, it can detect language for macaronic text as well like Hinglish, Bengalish and Malayalish etc. Currently, [83 languages](#supported_languages) are supported.
@@ -15,7 +16,7 @@ implementation 'com.touchtalent.bobblesdk:language-detection'
 
 ### BobbleLanguageDetector
 
-1. Setup - The module must be setup before usage.  ```BobbleLanguageDetector.setup(DetectionRequest)```. 
+1. Setup - The module must be installed before usage.  ```BobbleLanguageDetector.install()```. 
 ```java
 public class SplashActivity extends Activity {
 
@@ -23,8 +24,8 @@ public class SplashActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        DetectionRequest.Builder builder = new DetectionRequest.Builder(this);
-        builder.addListener(new DetectorInstallListener(){
+        
+        BobbleLanguageDetector.install(new DetectorInstallListener(){
             public void onComplete(){
                 ...
             }
@@ -33,7 +34,6 @@ public class SplashActivity extends Activity {
                 
             }
         });
-        BobbleLanguageDetector.setup(builder.build());
         ...
     }
 }
@@ -51,13 +51,21 @@ Use following to detect the language
 ```LanguageDetectionResponse detectLanguage(String input)``` - Pass the complete input to get the detected langauge. 
 
 ```java
-LanguageDetectionResponse response = languageDetector.detectLanguage(text);  
+BobbleLanguageDetector languageDetector = new BobbleLanguageDetector();
+LanguageDetectionResponse response = languageDetector.detectLanguage(text, new DetectorInstallListener(){
+	public void onComplete() {
+	      ...
+	   // Display list of detected languages sorted by detection confidence.   
+	   for (LanguageDetected language : response.getLanguagesList()) {   
+		String code = language.getCode();
+		double confidence = language.getConfidence(); //ranges between 0 - 1.
+	   }
+    	}
+	
+	public void onError(String error){
+   	}
+});  
 
-// Display list of detected languages sorted by detection confidence.   
-for (LanguageDetected language : response.getLanguagesList()) {   
-	String code = language.getCode();
-	double confidence = language.getConfidence(); //ranges between 0 - 1.
-}
 ```
 
 3. Close BobbleLanguageDetector object -
