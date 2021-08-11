@@ -70,6 +70,16 @@ languageDetector.detectLanguage(text, new DetectionListener(){
 
 ```
 
+Here are some of the examples : 
+```java
+Input Text : "Hello, World!", Language Detected : en (English)
+Input Text : "സുപ്രഭാതം", Language Detected : ml_IN (Malayalam)
+Input Text : "kya kar rahe ho?", Language Detected : en_hi (Hinglish)
+Input Text : "कैसे हो भाई?", Language Detected : hi_IN (Hindi)
+Input Text : "பிறந்தநாள் வாழ்த்துக்கள்", Language Detected : ta_IN (Tamil)
+Input Text : "weekend ka kya plan hai? चल कॉफी के लिए चलते हैं", Language Detected : en_hi (Hinglish), hi_IN (Hindi)
+```
+
 3. Close BobbleLanguageDetector object -
 The ```BobbleLanguageDetector``` object must be closed to safely release resources when not required.
 
@@ -98,36 +108,36 @@ public class MainActivity extends Activity {
 ## <a name="supported_languages"></a>Supported Languages
 |Sl no.| Language name | Language locale |
 |---| ------------- | ---------- |
-|1|Hindi                | hi_IN         |
-|2|Bangla (India)       | bn_IN         |
-|3|Marathi              | mr_IN         |
-|4|Telugu               | te_IN         |
-|5|Tamil (India)        | ta_IN         |
-|6|Gujarati             | gu_IN         |
-|7|Urdu (India)         | ur_IN         |
-|8|Kannada              | kn_IN         |
-|9|Odia                 | or_IN         |
-|10| Malayalam            | ml_IN         |
-|11| Punjabi, Gurmukhi    | pa_IN         |
-|12| Assamese             | as_IN         |
-|13| Maithili             | mai_IN   |
-|14| Santhali, Devanagari   | sat_IN    |
-|15| Sindhi, Devanagari   | sd_IN    |
-|16| Kashmiri, Devanagari | ks_IN    |
-|17| Dogri, Devanagari    | doi_IN       |
-|18| Konkani, Devanagari  | kok_IN   |
-|19| Bodo, Devanagari     | brx_IN   |
-|20| Sanskrit             | sa_IN         |
-|21| Bhojpuri             | bho_IN   |
-|22| Marwari (India)      | mwr_IN   |
-|23| Nepali (India)       | ne_IN         |
-|24| Rajasthani (India)       | raj_IN         |
-|25| Ahirani              | ahr        |
-|26| Awadhi               | awa        |
-|27| Bagheli              | bfy        |
-|28| Bagri (India)        | bgq\_dev   |
-|29| Bagri (Pakistan)     | bgq\_arab  |
-|30| Sinhala              | si_LK         |
+|1|English		| en		|
+|2|Hindi                | hi_IN         |
+|3|Bangla (India)       | bn_IN         |
+|4|Marathi              | mr_IN         |
+|5|Telugu               | te_IN         |
+|6|Tamil (India)        | ta_IN         |
+|7|Gujarati             | gu_IN         |
+|8|Urdu (India)         | ur_IN         |
+|9|Kannada              | kn_IN         |
+|10|Odia                 | or_IN         |
+|11| Malayalam            | ml_IN         |
+|12| Punjabi, Gurmukhi    | pa_IN         |
+|13| Assamese             | as_IN         |
+|14| Maithili             | mai_IN   |
+|15| Santhali, Devanagari   | sat_IN    |
+|16| Sindhi, Devanagari   | sd_IN    |
+|17| Kashmiri, Devanagari | ks_IN    |
+|18| Dogri, Devanagari    | doi_IN       |
+|19| Konkani, Devanagari  | kok_IN   |
+|20| Bodo, Devanagari     | brx_IN   |
+|21| Sanskrit             | sa_IN         |
+|22| Bhojpuri             | bho_IN   |
+|23| Marwari (India)      | mwr_IN   |
+|24| Nepali (India)       | ne_IN         |
+|25| Rajasthani (India)       | raj_IN         |
+|26| Ahirani              | ahr        |
+|27| Awadhi               | awa        |
+|28| Bagheli              | bfy        |
+|29| Bagri (India)        | bgq\_dev   |
+|30| Bagri (Pakistan)     | bgq\_arab  |
 |31| Tulu                 | tcy        |
 |32| Bhili, Devanagari    | bhb\_dev   |
 |33| Bhili, Gujarati      | bhb\_gujr  |
@@ -173,21 +183,23 @@ public class MainActivity extends Activity {
 |73| Rangpuri, Devanagari | rkt\_dev   |
 |74| Santali, Bengali     | sat\_beng  |
 |75| Sindhi, Arabic       | sd \_urdu  |
-|76| Hinglish       | en\_hi  |
-|77| Bengalish       | en \_bn  |
-|78| Malayalish       | en \_ml  |
-|79| Marathish       | en \_mr  |
-|80| Punjabish       | en \_pa  |
-|81| Gujaratish       | en \_gu  |
-|82| Teleguish       | en \_te  |
-|83| Tamilish       | en \_ta |
-|84| Kannadish       | en \_kn  |
-|85| Sinhalish       | en\_si_lk  |
+|76| Sinhala              | si_LK         |
+|77| Hinglish       | en\_hi  |
+|78| Bengalish       | en \_bn  |
+|79| Malayalish       | en \_ml  |
+|80| Marathish       | en \_mr  |
+|81| Punjabish       | en \_pa  |
+|82| Gujaratish       | en \_gu  |
+|83| Teleguish       | en \_te  |
+|84| Tamilish       | en \_ta |
+|85| Kannadish       | en \_kn  |
+|86| Sinhalish       | en\_si_lk  |
 
 ## <a name="error_codes"></a>Error Codes
 |Error_Code | Description |
 |---------- | ----------- |
 |ERROR_UNAUTHORIZED | The client is not authorized to connect to the service.  |
 |ERROR_TIMEOUT      | Timed out while awaiting the result.         |
+|ERROR_TEXT_TOO_LONG | The input text is too long to be processed. Currently there is a limit of 500 characters for the input text |
 |ERROR_CANCELED     | The result was canceled due to client disconnect         |
 |ERROR_INTERNAL     | An internal error occurred.         |
