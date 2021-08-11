@@ -25,12 +25,13 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        BobbleLanguageDetector.install(new DetectorInstallListener(){
-            public void onComplete(){
+        BobbleLanguageDetector.install(new DetectorInstallListener() {
+            public void onComplete() {
                 ...
             }
 
-            public void onError(BobbleError error){
+            public void onError(BobbleError error) {
+	    	int errorCode = error.getCode(); //Please refer to the Error codes section for getting reason of the error.
                 
             }
         });
@@ -62,7 +63,8 @@ languageDetector.detectLanguage(text, new DetectionListener(){
 	}
     }
 	
-    public void onError(BobbleError error){
+    public void onError(BobbleError error) {
+    	int errorCode = error.getCode(); //Please refer to the Error codes section for getting reason of the error.
     }
 });  
 
@@ -181,3 +183,11 @@ public class MainActivity extends Activity {
 |83| Tamilish       | en \_ta |
 |84| Kannadish       | en \_kn  |
 |85| Sinhalish       | en\_si_lk  |
+
+## <a name="error_codes"></a>Error Codes
+|Error_Code | Description |
+|---------- | ----------- |
+|ERROR_UNAUTHORIZED | The client is not authorized to connect to the service.  |
+|ERROR_TIMEOUT      | Timed out while awaiting the result.         |
+|ERROR_CANCELED     | The result was canceled due to client disconnect         |
+|ERROR_INTERNAL     | An internal error occurred.         |
