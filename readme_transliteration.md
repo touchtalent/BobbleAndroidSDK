@@ -16,53 +16,40 @@ implementation 'com.touchtalent.bobblesdk:transliteration'
 
 ### BobbleTransliterator
 
-1. Managing languages - A language must be installed before it can be used for transliteration. Install / uninstall language(s) via ```BobbleTransliterator.manage(TransliteratorRequest)```. 
-```java
-public class SplashActivity extends Activity {
+1. Managing languages - Transliteration requires few resources to be downloaded from the internet. Install/uninstall the language as per the requirement. 
+```kotlin
+class SplashActivity : AppCompatActivity {
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main);
-        TransliteratorRequest.Builder builder = new TransliteratorRequest.Builder(this);
-        builder.installLanguages("hi", "te");
-        builder.uninstallLanguages("bn");
-        builder.addListener(new TransliteratorInstallListener(){
-            public void onLanguageDownloaded(String languageLocale){
-                ...
-            }
-
-            public void onLanguageError(String languageLocale){
-                
-            }
-        });
-        BobbleTransliterator.manage(builder.build());
-        ...
+        // Calling this will cause this languages to install, if not already present and others to 
+        // uninstall
+        BobbleTransliteratorSdk.setLanguages("hi", "bn")
     }
+
 }
+
 ```
 
 2. Start transliterating -
 Create an instance of ```BobbleTransliterator``` to start a new transliteration session. Pass the language locale (refer [here](#supported_languages) for complete list) in the context of which transliteration needs to take place.
 
->P.S - The language needs to be installed before it can be used. Use following function to check availability of a particular language
->```java
->boolean isInstalled = BobbleTransliterator.isInstalled("hi");
->```
+>P.S - The language will be automatically installed if not installed earlier.
 
  ```BobbleTransliterator``` facilitates both <b><i>continuous typing</i></b> as well as <b><i>non-continuous typing</i></b>.
 
 #### Continuous Typing
-```void bind(EditText inputBox)``` - The transliterator binds itself with given ```EditText``` and automatically transliterates it, as it receives input events.
+```void bind(inputBox: EditText)``` - The transliterator binds itself with given ```EditText``` and automatically transliterates it, as it receives input events.
 ```java
-EditText input = view.findViewById(R.id.input);
+val input = binding.editText
 transliterator.bind(input);
 ```
 
 #### Mixed Typing (continuous / Non-continuous typing)
-```String transliterate(String input)``` - Pass the complete input to get the transliterated output. ```BobbleTransliterator``` evaluates the latest input based on last input and handles both continuous / non-continuous cases accordingly. 
+```fun transliterate(input: String): String``` - Pass the complete input to get the transliterated output. ```BobbleTransliterator``` evaluates the latest input based on last input and handles both continuous / non-continuous cases accordingly. 
 ```java
-String transliteration;
+var transliteration: String;
 transliteration = transliterator.transliterate("n");      // transliteration = "न"
 transliteration = transliterator.transliterate("na");     // transliteration = "ना"
 transliteration = transliterator.transliterate("nam");    // transliteration = "नम"
@@ -78,26 +65,23 @@ transliteration = transliterator.transliterate("namaste");// transliteration = "
 The ```BobbleTransliterator``` object must be closed to safely release resources when not required.
 
 ```java
-public class MainActivity extends Activity {
+class SplashActivity : AppCompatActivity {
 
-    BobbleTransliterator transliterator;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    val transliterator: BobbleTransliterator? = null
+    
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main);
-        transliterator = new BobbleTransliterator("hi");
-        ...
+        transliterator = BobbleTransliterator("hi")
     }
-
-    @Override
-    public void onDestroy() {
-        super.onCreate(savedInstanceState);
-        transliterator.close();
-        ...
+    
+    override fun onDestroy(){
+        super.onDestroy()
+        transliterator?.close()
     }
 
 }
+
 ```
 ## <a name="supported_languages"></a>Supported Languages
 |Sl no.| Language name | Language locale |
